@@ -2,11 +2,7 @@ import Foundation
 
 class ConfirmationViewModel {
 
-    private weak var delegate: ConfirmationViewModelDelegate?
-
-    init(delegate: ConfirmationViewModelDelegate) {
-        self.delegate = delegate
-    }
+    weak var delegate: ConfirmationViewModelDelegate?
 
 }
 

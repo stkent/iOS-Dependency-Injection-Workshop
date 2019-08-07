@@ -11,7 +11,6 @@
 		AC788B8322FB047200D337D0 /* ChooseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8222FB047200D337D0 /* ChooseCardViewController.swift */; };
 		AC788B8522FB048700D337D0 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8422FB048700D337D0 /* ConfirmationViewController.swift */; };
 		AC788B8722FB051400D337D0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8622FB051400D337D0 /* Session.swift */; };
-		AC788B8922FB05A000D337D0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8822FB05A000D337D0 /* LoginViewModel.swift */; };
 		AC788B8B22FB05B100D337D0 /* ChooseSandwichViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8A22FB05B100D337D0 /* ChooseSandwichViewModel.swift */; };
 		AC788B8D22FB05BA00D337D0 /* ChooseCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8C22FB05B900D337D0 /* ChooseCardViewModel.swift */; };
 		AC788B8F22FB05C100D337D0 /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8E22FB05C100D337D0 /* ConfirmationViewModel.swift */; };
@@ -41,7 +40,6 @@
 		AC788B8222FB047200D337D0 /* ChooseCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCardViewController.swift; sourceTree = "<group>"; };
 		AC788B8422FB048700D337D0 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		AC788B8622FB051400D337D0 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		AC788B8822FB05A000D337D0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		AC788B8A22FB05B100D337D0 /* ChooseSandwichViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSandwichViewModel.swift; sourceTree = "<group>"; };
 		AC788B8C22FB05B900D337D0 /* ChooseCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCardViewModel.swift; sourceTree = "<group>"; };
 		AC788B8E22FB05C100D337D0 /* ConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewModel.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				ACE99D8322F8AEB4001C7760 /* LoginViewController.swift */,
-				AC788B8822FB05A000D337D0 /* LoginViewModel.swift */,
 				AC788B9622FB151A00D337D0 /* LoginView.xib */,
 			);
 			path = Login;
@@ -298,7 +295,6 @@
 				AC788B8D22FB05BA00D337D0 /* ChooseCardViewModel.swift in Sources */,
 				AC788B8522FB048700D337D0 /* ConfirmationViewController.swift in Sources */,
 				AC788B8B22FB05B100D337D0 /* ChooseSandwichViewModel.swift in Sources */,
-				AC788B8922FB05A000D337D0 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,21 +1,20 @@
 import UIKit
 
+protocol LoginNavDelegate: AnyObject {
+    func advanceToChooseSandwichScreen()
+}
+
 class LoginViewController: UIViewController {
 
-    static func build() -> LoginViewController {
-        let viewModel = LoginViewModel()
-        let viewController = LoginViewController(viewModel)
-        viewModel.delegate = viewController
-        return viewController
+    unowned let navDelegate: LoginNavDelegate
+
+    @IBAction func onButtonTapped(_ sender: UIButton) {
+        navDelegate.advanceToChooseSandwichScreen()
     }
 
-    private let viewModel: LoginViewModel!
-
-    init(_ viewModel: LoginViewModel) {
-        self.viewModel = viewModel
+    init(navDelegate: LoginNavDelegate) {
+        self.navDelegate = navDelegate
         super.init(nibName: nil, bundle: nil)
-
-        print("test")
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -24,11 +23,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("2")
     }
-
-}
-
-extension LoginViewController: LoginViewModelDelegate {
 
 }
