@@ -1,6 +1,6 @@
 import Foundation
 
-class ChooseSandwichViewModel {
+final class ChooseSandwichViewModel {
 
     weak var delegate: ChooseSandwichViewModelDelegate?
 

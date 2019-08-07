@@ -1,6 +1,6 @@
 import Foundation
 
-class ChooseCardViewModel {
+final class ChooseCardViewModel {
 
     weak var delegate: ChooseCardViewModelDelegate?
 

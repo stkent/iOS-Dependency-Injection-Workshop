@@ -4,7 +4,7 @@ protocol LoginNavDelegate: AnyObject {
     func advanceToChooseSandwichScreen()
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     unowned let navDelegate: LoginNavDelegate
 

@@ -1,6 +1,8 @@
 import UIKit
 
-class ConfirmationViewController: UIViewController {
+final class ConfirmationViewController: UIViewController {
+    
+    private let viewModel: ConfirmationViewModel
 
     static func build(navDelegate: ChooseSandwichNavDelegate) -> ConfirmationViewController {
         let viewModel = ConfirmationViewModel()
@@ -8,8 +10,6 @@ class ConfirmationViewController: UIViewController {
         viewModel.delegate = viewController
         return viewController
     }
-
-    private let viewModel: ConfirmationViewModel
 
     init(_ viewModel: ConfirmationViewModel) {
         self.viewModel = viewModel
