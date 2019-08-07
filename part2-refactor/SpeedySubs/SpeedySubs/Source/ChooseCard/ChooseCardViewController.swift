@@ -4,7 +4,9 @@ protocol ChooseCardNavDelegate: AnyObject {
     func advanceToConfirmationScreen()
 }
 
-class ChooseCardViewController: UIViewController {
+final class ChooseCardViewController: UIViewController {
+    
+    private let viewModel: ChooseCardViewModel
 
     static func build(navDelegate: ChooseCardNavDelegate) -> ChooseCardViewController {
         let viewModel = ChooseCardViewModel()
@@ -12,8 +14,6 @@ class ChooseCardViewController: UIViewController {
         viewModel.delegate = viewController
         return viewController
     }
-
-    private let viewModel: ChooseCardViewModel
 
     init(_ viewModel: ChooseCardViewModel) {
         self.viewModel = viewModel

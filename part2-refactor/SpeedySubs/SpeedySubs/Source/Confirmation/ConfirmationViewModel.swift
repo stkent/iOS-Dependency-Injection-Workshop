@@ -1,6 +1,6 @@
 import Foundation
 
-class ConfirmationViewModel {
+final class ConfirmationViewModel {
 
     weak var delegate: ConfirmationViewModelDelegate?
 

@@ -4,7 +4,9 @@ protocol ChooseSandwichNavDelegate: AnyObject {
     func advanceToChooseCardScreen()
 }
 
-class ChooseSandwichViewController: UIViewController {
+final class ChooseSandwichViewController: UIViewController {
+    
+    private let viewModel: ChooseSandwichViewModel
 
     static func build(navDelegate: ChooseSandwichNavDelegate) -> ChooseSandwichViewController {
         let viewModel = ChooseSandwichViewModel()
@@ -12,8 +14,6 @@ class ChooseSandwichViewController: UIViewController {
         viewModel.delegate = viewController
         return viewController
     }
-
-    private let viewModel: ChooseSandwichViewModel
 
     init(_ viewModel: ChooseSandwichViewModel) {
         self.viewModel = viewModel
