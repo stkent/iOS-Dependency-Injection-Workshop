@@ -16,6 +16,9 @@
 		AC788B8D22FB05BA00D337D0 /* ChooseCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8C22FB05B900D337D0 /* ChooseCardViewModel.swift */; };
 		AC788B8F22FB05C100D337D0 /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8E22FB05C100D337D0 /* ConfirmationViewModel.swift */; };
 		AC788B9722FB151A00D337D0 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC788B9622FB151A00D337D0 /* LoginView.xib */; };
+		AC788B9922FB536E00D337D0 /* ConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC788B9822FB536E00D337D0 /* ConfirmationView.xib */; };
+		AC788B9B22FB537600D337D0 /* ChooseSandwichView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC788B9A22FB537600D337D0 /* ChooseSandwichView.xib */; };
+		AC788B9D22FB537E00D337D0 /* ChooseCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC788B9C22FB537E00D337D0 /* ChooseCardView.xib */; };
 		ACE99D8222F8AEB4001C7760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE99D8122F8AEB4001C7760 /* AppDelegate.swift */; };
 		ACE99D8422F8AEB4001C7760 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE99D8322F8AEB4001C7760 /* LoginViewController.swift */; };
 		ACE99D8922F8AEB5001C7760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE99D8822F8AEB5001C7760 /* Assets.xcassets */; };
@@ -43,6 +46,9 @@
 		AC788B8C22FB05B900D337D0 /* ChooseCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCardViewModel.swift; sourceTree = "<group>"; };
 		AC788B8E22FB05C100D337D0 /* ConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewModel.swift; sourceTree = "<group>"; };
 		AC788B9622FB151A00D337D0 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		AC788B9822FB536E00D337D0 /* ConfirmationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmationView.xib; sourceTree = "<group>"; };
+		AC788B9A22FB537600D337D0 /* ChooseSandwichView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseSandwichView.xib; sourceTree = "<group>"; };
+		AC788B9C22FB537E00D337D0 /* ChooseCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseCardView.xib; sourceTree = "<group>"; };
 		ACE99D7E22F8AEB4001C7760 /* SpeedySubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedySubs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE99D8122F8AEB4001C7760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE99D8322F8AEB4001C7760 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 			children = (
 				AC788B8222FB047200D337D0 /* ChooseCardViewController.swift */,
 				AC788B8C22FB05B900D337D0 /* ChooseCardViewModel.swift */,
+				AC788B9C22FB537E00D337D0 /* ChooseCardView.xib */,
 			);
 			path = ChooseCard;
 			sourceTree = "<group>";
@@ -117,6 +124,7 @@
 			children = (
 				AC788B8022FB045400D337D0 /* ChooseSandwichViewController.swift */,
 				AC788B8A22FB05B100D337D0 /* ChooseSandwichViewModel.swift */,
+				AC788B9A22FB537600D337D0 /* ChooseSandwichView.xib */,
 			);
 			path = ChooseSandwich;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 			children = (
 				AC788B8422FB048700D337D0 /* ConfirmationViewController.swift */,
 				AC788B8E22FB05C100D337D0 /* ConfirmationViewModel.swift */,
+				AC788B9822FB536E00D337D0 /* ConfirmationView.xib */,
 			);
 			path = Confirmation;
 			sourceTree = "<group>";
@@ -258,7 +267,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACE99D8C22F8AEB5001C7760 /* LaunchScreen.storyboard in Resources */,
+				AC788B9D22FB537E00D337D0 /* ChooseCardView.xib in Resources */,
+				AC788B9922FB536E00D337D0 /* ConfirmationView.xib in Resources */,
 				ACE99D8922F8AEB5001C7760 /* Assets.xcassets in Resources */,
+				AC788B9B22FB537600D337D0 /* ChooseSandwichView.xib in Resources */,
 				AC788B9722FB151A00D337D0 /* LoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
