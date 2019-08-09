@@ -6,7 +6,7 @@ protocol LoginNavDelegate: AnyObject {
 
 final class LoginViewController: UIViewController {
 
-    unowned let navDelegate: LoginNavDelegate
+    private weak var navDelegate: LoginNavDelegate?
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
 
@@ -29,7 +29,7 @@ final class LoginViewController: UIViewController {
             return
         }
         
-        navDelegate.advanceToChooseSandwichScreen()
+        navDelegate?.advanceToChooseSandwichScreen()
     }
     
     private var isLoginValid: Bool {
