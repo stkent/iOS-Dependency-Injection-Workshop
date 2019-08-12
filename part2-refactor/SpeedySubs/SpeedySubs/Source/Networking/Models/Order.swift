@@ -1,6 +1,6 @@
 import Foundation
 
-class Order: Encodable {
-    var sandwich: Sandwich? = nil
-    var creditCard: CreditCard? = nil
+final class Order: Encodable {
+    var sandwich: Sandwich?
+    var creditCard: CreditCard?
 }

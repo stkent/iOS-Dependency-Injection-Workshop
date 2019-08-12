@@ -7,7 +7,7 @@ enum NetworkingError: Error {
     case serverDown
 }
 
-class OrderingAPI {
+final class OrderingAPI {
 
     func logIn(username: String,
                password: String,
