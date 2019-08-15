@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC1D65352305F63F0019099D /* ConfirmationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1D65342305F63F0019099D /* ConfirmationViewModelTests.swift */; };
 		AC788B8122FB045400D337D0 /* ChooseSandwichViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8022FB045400D337D0 /* ChooseSandwichViewController.swift */; };
 		AC788B8322FB047200D337D0 /* ChooseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8222FB047200D337D0 /* ChooseCardViewController.swift */; };
 		AC788B8522FB048700D337D0 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC788B8422FB048700D337D0 /* ConfirmationViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC1D65342305F63F0019099D /* ConfirmationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewModelTests.swift; sourceTree = "<group>"; };
 		AC788B8022FB045400D337D0 /* ChooseSandwichViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSandwichViewController.swift; sourceTree = "<group>"; };
 		AC788B8222FB047200D337D0 /* ChooseCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCardViewController.swift; sourceTree = "<group>"; };
 		AC788B8422FB048700D337D0 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC1D65332305F6300019099D /* Confirmation */ = {
+			isa = PBXGroup;
+			children = (
+				AC1D65342305F63F0019099D /* ConfirmationViewModelTests.swift */,
+			);
+			path = Confirmation;
+			sourceTree = "<group>";
+		};
 		AC788B7E22FB03D000D337D0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 		AC788B7F22FB03EC00D337D0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				AC1D65332305F6300019099D /* Confirmation */,
 				ACE99D9622F8AEB5001C7760 /* Placeholder.swift */,
 			);
 			path = Source;
@@ -350,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1D65352305F63F0019099D /* ConfirmationViewModelTests.swift in Sources */,
 				ACE99D9722F8AEB5001C7760 /* Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
