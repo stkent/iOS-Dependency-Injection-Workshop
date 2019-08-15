@@ -24,29 +24,35 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func onButtonTapped(_ sender: UIButton) {
-        guard isLoginValid else {
-            showInvalidLoginAlert()
-            return
-        }
-        
-        navDelegate?.advanceToChooseSandwichScreen()
-    }
-    
-    private var isLoginValid: Bool {
         guard let name = nameTextField.text,
-            let password = passwordTextField.text else { return false }
-        
-        return !name.isEmpty && !password.isEmpty
+              let password = passwordTextField.text,
+              !name.isEmpty,
+              !password.isEmpty else {
+
+                  showInvalidLoginAlert()
+                  return
+        }
+
+        // todo: show progress indicator
+
+        OrderingAPI().logIn(username: name, password: password) { [weak self] result in
+            // todo: hide progress indicator
+
+            switch result {
+            case .success(let customer):
+                Session.shared.customer = customer
+                self?.navDelegate?.advanceToChooseSandwichScreen()
+            case .failure(let error):
+                Session.shared.customer = nil
+                self?.showInformationalAlert(for: error)
+                break
+            }
+        }
     }
-    
+
     private func showInvalidLoginAlert() {
-        let alert = UIAlertController(title: "Login is invalid",
-                                      message: "Please enter text in the name and password fields",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK",
-                                      style: .cancel,
-                                      handler: nil))
-        present(alert, animated: true)
+        showInformationalAlert(title: "Login is invalid",
+                               message: "Please enter text in the name and password fields")
     }
-    
+
 }

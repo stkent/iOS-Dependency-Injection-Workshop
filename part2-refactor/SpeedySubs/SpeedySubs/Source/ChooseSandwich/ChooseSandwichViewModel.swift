@@ -20,7 +20,7 @@ final class ChooseSandwichViewModel {
                 let displaySandwiches = sSelf.getDisplaySandwiches(from: sandwiches)
                 sSelf.delegate?.displaySandwiches(displaySandwiches)
             case .failure(let error):
-                self?.delegate?.showError(message: error.localizedDescription)
+                self?.delegate?.showError(error)
             }
         }
     }
@@ -30,7 +30,7 @@ final class ChooseSandwichViewModel {
 
         let order = Order()
         order.sandwich = sandwich
-        // todo: update session
+        Session.shared.order = order
 
         delegate?.goToChooseCreditCardScreen()
     }
@@ -59,7 +59,7 @@ protocol ChooseSandwichViewModelDelegate: AnyObject {
     func showProgressViews()
     func hideProgressViews()
     func displaySandwiches(_ sandwiches: [DisplaySandwich])
-    func showError(message: String)
+    func showError(_ error: Error)
     func goToChooseCreditCardScreen()
 }
 

@@ -59,16 +59,8 @@ extension ChooseSandwichViewController: ChooseSandwichViewModelDelegate {
         tableView.reloadData()
     }
 
-    func showError(message: String) {
-        let alert = UIAlertController(title: "Network error",
-                                      message: message,
-                                      preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "OK",
-                                      style: .cancel,
-                                      handler: nil))
-
-        present(alert, animated: true)
+    func showError(_ error: Error) {
+        showInformationalAlert(for: error)
     }
 
     func goToChooseCreditCardScreen() {
