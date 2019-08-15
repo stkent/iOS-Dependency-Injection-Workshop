@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ChooseCardNavDelegate: AnyObject {
-    func advanceToConfirmationScreen()
+    func advanceToConfirmationScreen(orderID: OrderID)
 }
 
 final class ChooseCardViewController: UIViewController {

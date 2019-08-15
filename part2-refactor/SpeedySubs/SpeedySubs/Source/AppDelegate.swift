@@ -34,8 +34,15 @@ extension AppDelegate: ChooseSandwichNavDelegate {
 }
 
 extension AppDelegate: ChooseCardNavDelegate {
-    func advanceToConfirmationScreen() {
-        let nextViewController = ConfirmationViewController.build(navDelegate: self)
+    func advanceToConfirmationScreen(orderID: OrderID) {
+        let nextViewController = ConfirmationViewController.build(orderID: orderID, navDelegate: self)
         (window?.rootViewController as? UINavigationController)?.setViewControllers([nextViewController], animated: true)
+    }
+}
+
+extension AppDelegate: ConfirmationNavDelegate {
+    func resetToChooseSandwichScreen() {
+        let startViewController = ChooseSandwichViewController.build(navDelegate: self)
+        (window?.rootViewController as? UINavigationController)?.setViewControllers([startViewController], animated: true)
     }
 }

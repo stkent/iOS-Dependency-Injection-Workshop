@@ -37,7 +37,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Ij0-CS-Q7D">
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Ij0-CS-Q7D">
                             <rect key="frame" x="374" y="18.5" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
@@ -79,7 +79,7 @@
                                 <constraint firstAttribute="height" constant="50" id="1U5-5t-e6I"/>
                             </constraints>
                             <state key="normal" title="SUBMIT">
-                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                             <connections>
                                 <action selector="onButtonTapped:" destination="-1" eventType="touchUpInside" id="FWj-7Z-rJ0"/>

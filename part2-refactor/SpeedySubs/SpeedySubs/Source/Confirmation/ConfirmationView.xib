@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmationViewController" customModule="SpeedySubs" customModuleProvider="target">
             <connections>
+                <outlet property="confirmationLabel" destination="s1d-uF-XER" id="y3Y-mk-Piz"/>
                 <outlet property="view" destination="iN0-l3-epB" id="mXY-JP-KDp"/>
             </connections>
         </placeholder>
@@ -54,8 +55,11 @@
                                 <constraint firstAttribute="height" constant="50" id="avF-dA-Pqg"/>
                             </constraints>
                             <state key="normal" title="DONE">
-                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
+                            <connections>
+                                <action selector="onButtonTapped:" destination="-1" eventType="touchUpInside" id="xea-JH-1C8"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

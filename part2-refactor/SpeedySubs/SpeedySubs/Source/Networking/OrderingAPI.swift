@@ -2,6 +2,8 @@ import Foundation
 
 private let networkCallDuration = DispatchTimeInterval.seconds(2)
 
+typealias OrderID = Int
+
 enum NetworkingError: Error {
     case noInternet
     case serverDown
@@ -53,7 +55,7 @@ final class OrderingAPI {
 
     func placeOrder(customer: Customer,
                     order: Order,
-                    completionHandler: @escaping (Result<Int, NetworkingError>) -> ()) {
+                    completionHandler: @escaping (Result<OrderID, NetworkingError>) -> ()) {
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + networkCallDuration) {
             completionHandler(.success(Int.random(in: Int.min...Int.max)))
