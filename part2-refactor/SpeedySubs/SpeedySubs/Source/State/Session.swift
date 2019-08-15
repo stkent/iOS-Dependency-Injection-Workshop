@@ -1,6 +1,6 @@
 import Foundation
 
-class Session {
+final class Session {
 
     static let shared = Session()
     var customer: Customer?
