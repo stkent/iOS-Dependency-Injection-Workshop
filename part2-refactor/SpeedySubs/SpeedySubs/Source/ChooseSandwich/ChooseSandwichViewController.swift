@@ -45,13 +45,11 @@ final class ChooseSandwichViewController: UIViewController {
 
 extension ChooseSandwichViewController: ChooseSandwichViewModelDelegate {
     func showProgressViews() {
-        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
 
     func hideProgressViews() {
         activityIndicator.stopAnimating()
-        activityIndicator.isHidden = true
     }
 
     func displaySandwiches(_ sandwiches: [DisplaySandwich]) {

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="SpeedySubs" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="Ij0-CS-Q7D" id="pMh-XV-iaa"/>
                 <outlet property="nameTextField" destination="x6J-x4-30i" id="qTC-fe-ihA"/>
                 <outlet property="passwordTextField" destination="X1B-eh-XlF" id="dqD-1Z-X0T"/>
                 <outlet property="view" destination="iN0-l3-epB" id="M1g-2a-1SU"/>
@@ -62,7 +63,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="57"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsW-d0-MhC">
-                            <rect key="frame" x="20" y="0.0" width="374" height="57"/>
+                            <rect key="frame" x="20" y="0.0" width="334" height="57"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -72,12 +73,17 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Ij0-CS-Q7D">
+                            <rect key="frame" x="374" y="18.5" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="YsW-d0-MhC" firstAttribute="leading" secondItem="ZRq-iT-cei" secondAttribute="leading" constant="20" id="2vA-Va-8tv"/>
+                        <constraint firstItem="Ij0-CS-Q7D" firstAttribute="leading" secondItem="YsW-d0-MhC" secondAttribute="trailing" constant="20" id="GCT-P3-90n"/>
+                        <constraint firstAttribute="trailing" secondItem="Ij0-CS-Q7D" secondAttribute="trailing" constant="20" id="VSz-3O-ZQu"/>
                         <constraint firstAttribute="bottom" secondItem="YsW-d0-MhC" secondAttribute="bottom" id="WZR-bC-mYB"/>
-                        <constraint firstAttribute="trailing" secondItem="YsW-d0-MhC" secondAttribute="trailing" constant="20" id="iHW-rT-i2o"/>
+                        <constraint firstItem="Ij0-CS-Q7D" firstAttribute="centerY" secondItem="ZRq-iT-cei" secondAttribute="centerY" id="hdF-XW-iU2"/>
                         <constraint firstItem="YsW-d0-MhC" firstAttribute="top" secondItem="ZRq-iT-cei" secondAttribute="top" id="t1C-BT-J7T"/>
                     </constraints>
                 </view>
