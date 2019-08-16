@@ -23,6 +23,7 @@
 		AC94F4AD22FDAD8F00C57A13 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94F4AC22FDAD8F00C57A13 /* Customer.swift */; };
 		AC94F4AF22FDAE5900C57A13 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94F4AE22FDAE5900C57A13 /* Order.swift */; };
 		AC94F4B122FDAEB000C57A13 /* Sandwich.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94F4B022FDAEB000C57A13 /* Sandwich.swift */; };
+		AC9E21BB2305CCA700ED5651 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E21BA2305CCA700ED5651 /* UIViewControllerExtensions.swift */; };
 		ACE99D8222F8AEB4001C7760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE99D8122F8AEB4001C7760 /* AppDelegate.swift */; };
 		ACE99D8422F8AEB4001C7760 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE99D8322F8AEB4001C7760 /* LoginViewController.swift */; };
 		ACE99D8922F8AEB5001C7760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE99D8822F8AEB5001C7760 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		AC94F4AC22FDAD8F00C57A13 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		AC94F4AE22FDAE5900C57A13 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		AC94F4B022FDAEB000C57A13 /* Sandwich.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandwich.swift; sourceTree = "<group>"; };
+		AC9E21BA2305CCA700ED5651 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		ACE99D7E22F8AEB4001C7760 /* SpeedySubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedySubs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE99D8122F8AEB4001C7760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE99D8322F8AEB4001C7760 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				AC788B9122FB14C500D337D0 /* ChooseCard */,
 				AC788B9322FB14E100D337D0 /* ChooseSandwich */,
 				AC788B9422FB14EA00D337D0 /* Confirmation */,
+				AC9E21B92305CC9800ED5651 /* Extensions */,
 				AC788B9022FB14BA00D337D0 /* Login */,
 				AC94F4A622FDACB900C57A13 /* Networking */,
 				AC788B9522FB14F700D337D0 /* State */,
@@ -173,6 +176,14 @@
 				AC94F4B022FDAEB000C57A13 /* Sandwich.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AC9E21B92305CC9800ED5651 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AC9E21BA2305CCA700ED5651 /* UIViewControllerExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		ACE99D7522F8AEB4001C7760 = {
@@ -331,6 +342,7 @@
 				AC94F4AF22FDAE5900C57A13 /* Order.swift in Sources */,
 				AC94F4A822FDACE100C57A13 /* OrderingAPI.swift in Sources */,
 				AC788B8B22FB05B100D337D0 /* ChooseSandwichViewModel.swift in Sources */,
+				AC9E21BB2305CCA700ED5651 /* UIViewControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
