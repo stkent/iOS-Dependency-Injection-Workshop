@@ -18,6 +18,11 @@
 		AC788B9922FB536E00D337D0 /* ConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC788B9822FB536E00D337D0 /* ConfirmationView.xib */; };
 		AC788B9B22FB537600D337D0 /* ChooseSandwichView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC788B9A22FB537600D337D0 /* ChooseSandwichView.xib */; };
 		AC788B9D22FB537E00D337D0 /* ChooseCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC788B9C22FB537E00D337D0 /* ChooseCardView.xib */; };
+		AC94F4A822FDACE100C57A13 /* OrderingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94F4A722FDACE100C57A13 /* OrderingAPI.swift */; };
+		AC94F4AB22FDAD0B00C57A13 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94F4AA22FDAD0B00C57A13 /* CreditCard.swift */; };
+		AC94F4AD22FDAD8F00C57A13 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94F4AC22FDAD8F00C57A13 /* Customer.swift */; };
+		AC94F4AF22FDAE5900C57A13 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94F4AE22FDAE5900C57A13 /* Order.swift */; };
+		AC94F4B122FDAEB000C57A13 /* Sandwich.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94F4B022FDAEB000C57A13 /* Sandwich.swift */; };
 		ACE99D8222F8AEB4001C7760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE99D8122F8AEB4001C7760 /* AppDelegate.swift */; };
 		ACE99D8422F8AEB4001C7760 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE99D8322F8AEB4001C7760 /* LoginViewController.swift */; };
 		ACE99D8922F8AEB5001C7760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE99D8822F8AEB5001C7760 /* Assets.xcassets */; };
@@ -47,6 +52,11 @@
 		AC788B9822FB536E00D337D0 /* ConfirmationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmationView.xib; sourceTree = "<group>"; };
 		AC788B9A22FB537600D337D0 /* ChooseSandwichView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseSandwichView.xib; sourceTree = "<group>"; };
 		AC788B9C22FB537E00D337D0 /* ChooseCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseCardView.xib; sourceTree = "<group>"; };
+		AC94F4A722FDACE100C57A13 /* OrderingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingAPI.swift; sourceTree = "<group>"; };
+		AC94F4AA22FDAD0B00C57A13 /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		AC94F4AC22FDAD8F00C57A13 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		AC94F4AE22FDAE5900C57A13 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		AC94F4B022FDAEB000C57A13 /* Sandwich.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandwich.swift; sourceTree = "<group>"; };
 		ACE99D7E22F8AEB4001C7760 /* SpeedySubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedySubs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE99D8122F8AEB4001C7760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE99D8322F8AEB4001C7760 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +94,7 @@
 				AC788B9322FB14E100D337D0 /* ChooseSandwich */,
 				AC788B9422FB14EA00D337D0 /* Confirmation */,
 				AC788B9022FB14BA00D337D0 /* Login */,
+				AC94F4A622FDACB900C57A13 /* Networking */,
 				AC788B9522FB14F700D337D0 /* State */,
 			);
 			path = Source;
@@ -142,6 +153,26 @@
 				AC788B8622FB051400D337D0 /* Session.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		AC94F4A622FDACB900C57A13 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AC94F4A922FDACEF00C57A13 /* Models */,
+				AC94F4A722FDACE100C57A13 /* OrderingAPI.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		AC94F4A922FDACEF00C57A13 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AC94F4AA22FDAD0B00C57A13 /* CreditCard.swift */,
+				AC94F4AC22FDAD8F00C57A13 /* Customer.swift */,
+				AC94F4AE22FDAE5900C57A13 /* Order.swift */,
+				AC94F4B022FDAEB000C57A13 /* Sandwich.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		ACE99D7522F8AEB4001C7760 = {
@@ -289,11 +320,16 @@
 				AC788B8122FB045400D337D0 /* ChooseSandwichViewController.swift in Sources */,
 				ACE99D8422F8AEB4001C7760 /* LoginViewController.swift in Sources */,
 				AC788B8722FB051400D337D0 /* Session.swift in Sources */,
+				AC94F4AD22FDAD8F00C57A13 /* Customer.swift in Sources */,
 				ACE99D8222F8AEB4001C7760 /* AppDelegate.swift in Sources */,
 				AC788B8322FB047200D337D0 /* ChooseCardViewController.swift in Sources */,
+				AC94F4B122FDAEB000C57A13 /* Sandwich.swift in Sources */,
+				AC94F4AB22FDAD0B00C57A13 /* CreditCard.swift in Sources */,
 				AC788B8F22FB05C100D337D0 /* ConfirmationViewModel.swift in Sources */,
 				AC788B8D22FB05BA00D337D0 /* ChooseCardViewModel.swift in Sources */,
 				AC788B8522FB048700D337D0 /* ConfirmationViewController.swift in Sources */,
+				AC94F4AF22FDAE5900C57A13 /* Order.swift in Sources */,
+				AC94F4A822FDACE100C57A13 /* OrderingAPI.swift in Sources */,
 				AC788B8B22FB05B100D337D0 /* ChooseSandwichViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
