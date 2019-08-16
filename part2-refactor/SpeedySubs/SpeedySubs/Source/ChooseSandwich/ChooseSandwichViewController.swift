@@ -45,27 +45,25 @@ final class ChooseSandwichViewController: UIViewController {
 }
 
 extension ChooseSandwichViewController: ChooseSandwichViewModelDelegate {
-    func showProgressViews() {
-        activityIndicator.startAnimating()
+    func sandwichLoadStateChanged(_ state: ChooseSandwichViewModel.SandwichLoadState) {
+        switch state {
+        case .loading:
+            displayedSandwiches = []
+            tableView.reloadData()
+            activityIndicator.startAnimating()
+        case .loaded(let displaySandwiches):
+            activityIndicator.stopAnimating()
+            displayedSandwiches = displaySandwiches
+            tableView.reloadData()
+        case .failed(let error):
+            activityIndicator.stopAnimating()
+            showInformationalAlert(for: error)
+        }
     }
 
-    func hideProgressViews() {
-        activityIndicator.stopAnimating()
-    }
-
-    func displaySandwiches(_ sandwiches: [DisplaySandwich]) {
-        displayedSandwiches = sandwiches
-        tableView.reloadData()
-    }
-
-    func showError(_ error: Error) {
-        showInformationalAlert(for: error)
-    }
-
-    func goToChooseCreditCardScreen() {
+    func sandwichSelectionCompleted() {
         navDelegate?.advanceToChooseCardScreen()
     }
-
 }
 
 extension ChooseSandwichViewController: UITableViewDelegate {

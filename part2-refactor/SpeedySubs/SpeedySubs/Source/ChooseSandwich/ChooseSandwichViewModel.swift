@@ -2,25 +2,27 @@ import Foundation
 
 final class ChooseSandwichViewModel {
 
+    enum SandwichLoadState {
+        case loading
+        case loaded(_ displaySandwiches: [DisplaySandwich])
+        case failed(_ error: Error)
+    }
+
     private static let fakeIdKey = "FAVE_ID"
 
     weak var delegate: ChooseSandwichViewModelDelegate?
 
     func onViewWillAppear() {
-        delegate?.displaySandwiches([])
-
-        delegate?.showProgressViews()
+        delegate?.sandwichLoadStateChanged(.loading)
 
         OrderingAPI().getSandwiches { [weak self] result in
-            self?.delegate?.hideProgressViews()
-
             switch result {
             case .success(let sandwiches):
                 guard let sSelf = self else { return }
                 let displaySandwiches = sSelf.getDisplaySandwiches(from: sandwiches)
-                sSelf.delegate?.displaySandwiches(displaySandwiches)
+                sSelf.delegate?.sandwichLoadStateChanged(.loaded(displaySandwiches))
             case .failure(let error):
-                self?.delegate?.showError(error)
+                self?.delegate?.sandwichLoadStateChanged(.failed(error))
             }
         }
     }
@@ -32,7 +34,7 @@ final class ChooseSandwichViewModel {
         order.sandwich = sandwich
         Session.shared.order = order
 
-        delegate?.goToChooseCreditCardScreen()
+        delegate?.sandwichSelectionCompleted()
     }
 
     private func getDisplaySandwiches(from sandwiches: [Sandwich]) -> [DisplaySandwich] {
@@ -56,11 +58,8 @@ final class ChooseSandwichViewModel {
 }
 
 protocol ChooseSandwichViewModelDelegate: AnyObject {
-    func showProgressViews()
-    func hideProgressViews()
-    func displaySandwiches(_ sandwiches: [DisplaySandwich])
-    func showError(_ error: Error)
-    func goToChooseCreditCardScreen()
+    func sandwichLoadStateChanged(_ state: ChooseSandwichViewModel.SandwichLoadState)
+    func sandwichSelectionCompleted()
 }
 
 struct DisplaySandwich {
