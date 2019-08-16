@@ -1,3 +1,5 @@
+theme: Next, 8
+
 # iOS Dependency Injection
 
 ---
@@ -47,24 +49,25 @@ When a class `C` uses functionality from a type `D` _to perform its own function
 # A consumer/dependency example
 
 [.code-highlight: all]
-[.code-highlight: 2, 9]
-[.code-highlight: 3-8]
+[.code-highlight: 1]
+[.code-highlight: 2]
+[.code-highlight: 3]
 
 ```swift
-class HumanTimeHelper {
-    func getTimeOfDay() -> String {
-        switch (Calendar.current.dateComponents([.hour], from: Date()).hour!) {
-        case 6...12:  return "Morning"
-        case 13...17: return "Afternoon"
-        case 18...21: return "Evening"
-        default:      return "Night"
-        }
+class FriendlyTime {
+  func timeOfDay() -> String {
+    switch Calendar.current.dateComponents([.hour], from: Date()).hour! {
+    case 6...12:  return "Morning"
+    case 13...17: return "Afternoon"
+    case 18...21: return "Evening"
+    default:      return "Night"
     }
+  }
 }
 ```
 
 <!-- todo: update -->
-^In this example, the `HumanTimeHelper` class is our consumer. Its capabilities include providing collaborators with a nicely-formatted time of day. In order to build this string, the `HumanTimeHelper` class uses functionality from `Date` and `Calendar` instances; namely, the ability to fetch the current hour. The `Date` and `Calendar` instances are therefore dependencies of `HumanTimeHelper`.
+^In this example, the `FriendlyTime` class is our consumer. Its capabilities include providing collaborators with a nicely-formatted time of day. In order to build this string, the `FriendlyTime` class uses functionality from `Calendar` and `Date` instances to fetch the current hour. The `Calendar` and `Date` instances are therefore dependencies of `FriendlyTime`.
 
 ---
 
@@ -79,7 +82,7 @@ These classes are the hearts of our apps. Their capabilities include transformin
 
 ^These are not the only consumers you'll find in iOS apps, and they're not the only consumers worth testing. But they usually house significant amounts of application logic and so are some of the first classes to consider testing.
 
-^Unit testing view controllers will be hard even if you add DI, because they are tightly coupled to the Android framework, and framework-replacement testing tools like Robolectric have historically been fragile. For this reason, I would normally prioritize refactoring to use view models before thinking about adding DI. We'll do this in the guided refactor later.
+^Unit testing view controllers will be hard even if you add DI, because they are tightly coupled to the iOS framework. For this reason, I would normally prioritize refactoring to use view models before thinking about adding DI. We'll do this in the guided refactor later.
 
 ---
 
@@ -113,7 +116,7 @@ Example: an API client may consume a class that assists with local storage (for 
 <br />
 The relationships between all dependencies in an app are collectively referred to as the **dependency graph**.
 
-^We're not going to discuss dependency graphs in any great detail, but the phrase crops up frequently in DI discussions so it's good to be aware of what they are.
+^We're not going to discuss dependency graphs in any great detail, but the concept crops up when we touch on DI frameworks later, so it's good to be aware of.
 
 ---
 
@@ -131,44 +134,27 @@ The relationships between all dependencies in an app are collectively referred t
 
 # Hard-coded dependencies, v1
 
+// todo: reduce to single slide
+
 [.code-highlight: all]
 [.code-highlight: 3]
 
 ```swift
-class HumanTimeHelper {
-    func getTimeOfDay() -> String {
-        switch (Calendar.current.dateComponents([.hour], from: Date()).hour!) {
-        case 6...12:  return "Morning"
-        case 13...17: return "Afternoon"
-        case 18...21: return "Evening"
-        default:      return "Night"
-        }
+class FriendlyTime {
+  func timeOfDay() -> String {
+    switch Calendar.current.dateComponents([.hour], from: Date()).hour! {
+    case 6...12:  return "Morning"
+    case 13...17: return "Afternoon"
+    case 18...21: return "Evening"
+    default:      return "Night"
     }
+  }
 }
 ```
 
 ^The use of a constructor can signal a hard-coded dependency. Note that some non-dependency "glue" code (e.g. lists used for temporary storage) will also be instantiated using constructors, so deeper introspection is required to determine whether the instantiated object plays a significant role in the functionality of the consumer or not. This is a bit of an art.
 
 ^It doesn't matter _where_ a consumer calls the constructor of a dependency; whether up front (in its own constructor) or on-demand (e.g. in a method body, as in this example) - it's hard-coding either way.
-
----
-
-# Hard-coded dependencies, v2
-
-[.code-highlight: 3]
-
-```swift
-class HumanTimeHelper {
-    func getTimeOfDay() -> String {
-        switch (Calendar.current.dateComponents([.hour], from: Date()).hour!) {
-        case 6...12:  return "Morning"
-        case 13...17: return "Afternoon"
-        case 18...21: return "Evening"
-        default:      return "Night"
-        }
-    }
-}
-```
 
 ^Accessing a static or singleton instance directly is also considered to be hard-coding. This is slightly less tight coupling than calling a constructor directly, but causes other unit testing difficulties that we will explore more shortly.
 
@@ -180,17 +166,15 @@ A consumer with _impure_ dependencies will be **very hard to unit test at all**:
 <br />
 
 ```swift
-public class HumanTimeHelperTest {
-  @Test
-  public String testGetTimeStamp() {
-    String expected = "The time is 12:34";
-    String actual = HumanTimeHelper().getTimeOfDay();
-    assertEquals(expected, actual); // Almost always fails.
-  }
+func testTimeOfDayMorning() {
+  let expected = "Morning"
+  let actual = FriendlyTime().timeOfDay()
+  // Fails ~70% of the time:
+  XCTAssertEqual(expected, actual)
 }
 ```
 
-^Users of the `HumanTimeHelper` class have no way of testing the `getTimeOfDay` logic separately from the `SystemClock` logic. This means writing a reliable unit test for `getTimeOfDay` is impossible!
+^Users of the `FriendlyTime` class have no way of testing the `timeOfDay` logic separately from the `SystemClock` logic. This means writing a reliable unit test for `timeOfDay` is impossible!
 
 ---
 
@@ -208,16 +192,18 @@ A consumer's dependencies are **hidden**:
 <br />
 
 ```swift
-// Dependency on SystemClock is invisible:
-HumanTimeHelper humanTimeHelper = HumanTimeHelper();
-System.out.println(humanTimeHelper.getTimeOfDay());
+// Dependencies on Calendar and Date are invisible:
+let friendlyTime = FriendlyTime()
+print(friendlyTime.timeOfDay())
 ```
 
-^Users of the `HumanTimeHelper` class have no way of easily determining which other app components it uses.
+^Users of the `FriendlyTime` class have no way of easily determining which other app classes it uses.
 
 ---
 
 # Improving on hard-coding
+
+// todo: replace with recipe
 
 * Make consumer dependency needs **explicit** (by receiving instances through constructors or setters).
     _=> Also decouples consumer from dependency lifetime._
@@ -233,29 +219,14 @@ These are the elements of robust **dependency injection**!
 # Doing DI: Before
 
 ```swift
-public class TimeStamper {
-  private SystemClock systemClock;
-    
-  public TimeStamper() {
-    systemClock = SystemClock();
-  }
-    
-  public String getTimeStamp() {
-    return "The time is " + systemClock.now();
-  }
-}
-```
-
----
-
-# Doing DI: Before
-
-```swift
-public class SystemClock {
-  public String now() {
-    return LocalDateTime
-        .now()
-        .format(DateTimeFormatter.ofPattern("hh:mm"));
+class FriendlyTime {
+  func timeOfDay() -> String {
+    switch Calendar.current.dateComponents([.hour], from: Date()).hour! {
+    case 6...12:  return "Morning"
+    case 13...17: return "Afternoon"
+    case 18...21: return "Evening"
+    default:      return "Night"
+    }
   }
 }
 ```
@@ -264,16 +235,17 @@ public class SystemClock {
 
 # Doing DI: Identifying dependencies
 
-```swift
-public class TimeStamper {
-  private SystemClock systemClock;
-    
-  public TimeStamper() {
-    systemClock = SystemClock();
-  }            // ^^^^^^^^^^^^^^^^^ A (hard-coded) *dependency*!
+[.code-highlight: 3]
 
-  public String getTimeStamp() {
-    return "The time is " + systemClock.now();
+```swift
+class FriendlyTime {
+  func timeOfDay() -> String {
+    switch Calendar.current.dateComponents([.hour], from: Date()).hour! {
+    case 6...12:  return "Morning"
+    case 13...17: return "Afternoon"
+    case 18...21: return "Evening"
+    default:      return "Night"
+    }
   }
 }
 ```
@@ -284,21 +256,22 @@ public class TimeStamper {
 
 # Doing DI: Identifying behaviors
 
-```swift
-public class TimeStamper {
-  private SystemClock systemClock;
-    
-  public TimeStamper() {
-    systemClock = SystemClock();
-  }
+[.code-highlight: 3]
 
-  public String getTimeStamp() {
-    return "The time is " + systemClock.now();
-  }                      // ^^^^^^^^^^^^^^^^^ The *behavior* we rely on.
+```swift
+class FriendlyTime {
+  func timeOfDay() -> String {
+    switch Calendar.current.dateComponents([.hour], from: Date()).hour! {
+    case 6...12:  return "Morning"
+    case 13...17: return "Afternoon"
+    case 18...21: return "Evening"
+    default:      return "Night"
+    }
+  }
 }
 ```
 
-^The `HumanTimeHelper` class requires a dependency with the ability to provide the current clock time (via a method named `now`).
+^The `FriendlyTime` class requires a dependency with the ability to provide the current hour.
 
 ---
 
@@ -306,22 +279,26 @@ public class TimeStamper {
 
 ```swift
 // Describes the *behavior* our consumer relies on:
-public interface IClock {
-  String now();
-}
-
-// Is now one possible supplier of IClock behavior:
-public class SystemClock implements IClock {
-  @Override
-  public String now() {
-    return LocalDateTime
-        .now()
-        .format(DateTimeFormatter.ofPattern("hh:mm"));
-  }
+protocol IClock {
+  var hour: Int { get }
 }
 ```
 
-^The `IClock` protocol perfectly describes the clock-related needs of the `HumanTimeHelper` class identified in the previous slide. The original `SystemClock` class is updated to become one implementation of the `IClock` protocol.
+
+^The `IClock` protocol perfectly describes the clock-related needs of the `FriendlyTime` class identified in the previous slide.
+
+---
+
+# todo: title
+
+```swift
+// Is now one possible supplier of IClock behavior:
+class SystemClock: IClock {
+  var hour = Calendar.current.dateComponents([.hour], from: Date()).hour!
+}
+```
+
+^The original `SystemClock` class is updated to become one implementation of the `IClock` protocol.
 
 ---
 
@@ -333,43 +310,22 @@ public class SystemClock implements IClock {
 [.code-highlight: 9]
 
 ```swift
-public class TimeStamper {
-  private IClock clock;
-    
-  public TimeStamper(IClock clock) {
-    this.clock = clock;
-  }
-    
-  public String getTimeStamp() {
-    return "The time is " + clock.now();
-  }
-}
-```
+class FriendlyTime {
+  private let clock: IClock
+  init(clock: IClock) { self.clock = clock }
 
-^This is a common method of injecting dependencies. The `HumanTimeHelper` class is updated to require an `IClock` instance be passed to its constructor, and then saves this instance into a field (of updated type `IClock`) as before. `HumanTimeHelper` now has no idea that `SystemClock` exists.
-
----
-
-# Doing DI: Demanding dependencies (setter)
-
-[.code-highlight: all]
-[.code-highlight: 4]
-[.code-highlight: 2, 5]
-[.code-highlight: 9]
-
-```swift
-public class TimeStamper {
-  private IClock clock;
-    
-  public void setClock(IClock clock) {
-    this.clock = clock;
-  }
-    
-  public String getTimeStamp() {
-    return "The time is " + clock.now();
+  func timeOfDay() -> String {
+    switch clock.hour {
+    case 6...12:  return "Morning"
+    case 13...17: return "Afternoon"
+    case 18...21: return "Evening"
+    default:      return "Night"
+    }
   }
 }
 ```
+
+^This is a common method of injecting dependencies. The `FriendlyTime` class is updated to require an `IClock` instance be passed to its constructor, and then saves this instance into a field (of updated type `IClock`) as before. `FriendlyTime` now has no idea that `SystemClock` exists.
 
 ^If a dependency is not available for injection when a consumer is created, we can inject later via a setter instead. I prefer constructor injection where possible as you can then be sure all dependencies are always initialized.
 
@@ -381,52 +337,54 @@ public class TimeStamper {
 
 ```swift
 // Constructor injection in production code:
-HumanTimeHelper humanTimeHelper = HumanTimeHelper(SystemClock());
-System.out.println(humanTimeHelper.getTimeOfDay());
+let friendlyTime = FriendlyTime(SystemClock())
+print(friendlyTime.timeOfDay())
 ```
 
-^In production code, it is the responsibility of each class that constructs a `HumanTimeHelper` to decide which `IClock` implementation should be injected. In most apps there is exactly one production implementation of most dependency protocols. Here, we choose the `SystemClock` implementation.
+^In production code, it is the responsibility of each class that constructs a `FriendlyTime` to decide which `IClock` implementation should be injected. In most apps there is exactly one production implementation of most dependency protocols. Here, we choose the `SystemClock` implementation.
 
 ---
 
 # Doing DI: Manual injection
 
 ```swift
-// Mock clock created for use during tests:
-public class MockClock implements IClock {
-  private String fixedTime;
-  
-  public MockClock(String fixedTime) {  
-    this.fixedTime = fixedTime;
-  }
-
-  @Override
-  public String now() {
-    return fixedTime;
-  }
+// Deterministic clock created for use in tests:
+struct StubClock: IClock {
+  let hour: Int
 }
 ```
 
-^It is now possible to create alternative implementations of the `IClock` protocol, like this `MockClock` that always returns a fixed time. This repeatability in combination with dependency injection will allow us to write a reliable unit test for `HumanTimeHelper` (next slide).
+^It is now possible to create alternative implementations of the `IClock` protocol, like this `StubClock` that always returns a fixed time. This repeatability in combination with dependency injection will allow us to write a reliable unit test for `FriendlyTime` (next slide).
 
 ---
 
 # Doing DI: Manual injection
 
 ```swift
-// Constructor injection in test code:
-public class HumanTimeHelperTest {
-  @Test
-  public String testGetTimeStamp() {
-    let expected = "The time is 12:34";
-    let mockClock = MockClock("12:34");
-    let actual = HumanTimeHelper(mockClock).getTimeOfDay();
-    assertEquals(expected, actual); // Always passes.
-  }
+func testTimeOfDayMorning() {
+  let expected = "Morning"
+  let stubClock = StubClock(hour: 6)
+  let actual = FriendlyTime(clock: stubClock).timeOfDay()
+  // Always passes:
+  XCTAssertEqual(expected, actual)
 }
 ```
 
-^By injecting a `MockClock` with fixed time "12:34" in test code, the expected result of `HumanTimeHelper::getTimeOfDay` is now consistent and we can write assertions against it.
+^By injecting a `StubClock` with fixed hour 6 in test code, the expected result of `FriendlyTime::timeOfDay` is now consistent and we can write assertions against it.
+
+---
+
+# Doing DI: Manual injection
+
+```swift
+func testTimeOfDayEvening() {
+  let expected = "Evening"
+  let stubClock = StubClock(hour: 19)
+  let actual = FriendlyTime(clock: stubClock).timeOfDay()
+  // Always passes:
+  XCTAssertEqual(expected, actual)
+}
+```
 
 ---
 
@@ -440,19 +398,21 @@ public class HumanTimeHelperTest {
     e.g. `D1(D2(D3(...), ...), ...)`.
 - ❌ Insufficient for reliable UI testing.
 
-^While repetitive, manual DI is normally not difficult to implement correctly because of this fact from earlier: "In most apps there is exactly one production implementation of most dependency protocols." In addition, if you're using Kotlin, you can leverage default parameter values to automatically inject production dependencies by default, and only explicitly specify alternatives in test code.
+^While repetitive, manual DI is normally not difficult to implement correctly because of this fact from earlier: "In most apps there is exactly one production implementation of most dependency protocols." In addition, you can leverage default parameter values to automatically inject production dependencies by default, and only explicitly specify alternatives in test code. // todo: this pushes us back towards SL, doesn't save much code for VMs (but can for other dependencies)
 
 ---
 
 # Doing DI: Framework injection
 
-Most Java/Kotlin DI frameworks are structured similarly:
+Most DI frameworks are structured similarly:
 
 - Centralized code describes the entire dependency graph
 - Consumers add `@Inject` annotations to their dependencies
 - Classes call an `inject` method to trigger injection
 
 The details are (much) more complicated, but that's the gist.
+
+// todo: add examples
 
 ---
 
@@ -480,33 +440,6 @@ Use a framework if:
 - you are already comfortable with DI principles
 
 Otherwise, **prefer manual constructor injection.**
-
----
-
-# The community says...
-⠀
-
----
-
-![](images/tweet_0.jpg)
-
----
-
-![](images/tweet_1.jpg)
-
----
-
-![](images/tweet_2.jpg)
-
----
-
-![](images/tweet_3.jpg)
-
----
-
-![](images/tweet_4.jpg)
-
-^Dagger is notoriously tough to wrangle. I haven't used Koin yet.
 
 ---
 
