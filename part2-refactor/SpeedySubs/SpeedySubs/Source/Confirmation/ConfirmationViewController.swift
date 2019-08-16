@@ -40,11 +40,11 @@ final class ConfirmationViewController: UIViewController {
 }
 
 extension ConfirmationViewController: ConfirmationViewModelDelegate {
-    func showConfirmationMessage(message: String) {
+    func confirmationMessage(message: String) {
         confirmationLabel.text = message
     }
 
-    func resetToChooseSandwichScreen() {
+    func confirmationAcknowledged() {
         navDelegate?.resetToChooseSandwichScreen()
     }
 }

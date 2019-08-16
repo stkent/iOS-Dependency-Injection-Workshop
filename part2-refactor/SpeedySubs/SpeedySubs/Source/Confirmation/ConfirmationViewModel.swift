@@ -10,16 +10,16 @@ final class ConfirmationViewModel {
     }
 
     func onViewDidLoad() {
-        delegate?.showConfirmationMessage(message: "Order \(orderID) successfully placed!")
+        delegate?.confirmationMessage(message: "Order \(orderID) successfully placed!")
     }
 
     func onDoneButtonTapped() {
-        delegate?.resetToChooseSandwichScreen()
+        delegate?.confirmationAcknowledged()
     }
 
 }
 
 protocol ConfirmationViewModelDelegate: AnyObject {
-    func showConfirmationMessage(message: String)
-    func resetToChooseSandwichScreen()
+    func confirmationMessage(message: String)
+    func confirmationAcknowledged()
 }

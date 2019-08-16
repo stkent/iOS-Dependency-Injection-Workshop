@@ -13,8 +13,8 @@ class ConfirmationViewModelTests: XCTestCase {
         viewModel.onViewDidLoad()
 
         // Assert
-        XCTAssertEqual(mockDelegate.showConfirmationMessageCallCount, 1)
-        XCTAssertEqual(mockDelegate.showConfirmationMessageLastArg, "Order 23561 successfully placed!")
+        XCTAssertEqual(mockDelegate.confirmationMessageCallCount, 1)
+        XCTAssertEqual(mockDelegate.confirmationMessageLastArg, "Order 23561 successfully placed!")
     }
 
     func testNavigationTriggeredOnDoneButtonTapped() {
@@ -27,22 +27,22 @@ class ConfirmationViewModelTests: XCTestCase {
         viewModel.onDoneButtonTapped()
 
         // Assert
-        XCTAssertEqual(mockDelegate.resetToChooseSandwichScreenCallCount, 1)
+        XCTAssertEqual(mockDelegate.confirmationAcknowledgedCallCount, 1)
     }
 
 }
 
 private class MockDelegate: ConfirmationViewModelDelegate {
-    private(set) var showConfirmationMessageCallCount = 0
-    private(set) var showConfirmationMessageLastArg: String?
-    private(set) var resetToChooseSandwichScreenCallCount = 0
+    private(set) var confirmationMessageCallCount = 0
+    private(set) var confirmationMessageLastArg: String?
+    private(set) var confirmationAcknowledgedCallCount = 0
 
-    func showConfirmationMessage(message: String) {
-        showConfirmationMessageCallCount += 1
-        showConfirmationMessageLastArg = message
+    func confirmationMessage(message: String) {
+        confirmationMessageCallCount += 1
+        confirmationMessageLastArg = message
     }
 
-    func resetToChooseSandwichScreen() {
-        resetToChooseSandwichScreenCallCount += 1
+    func confirmationAcknowledged() {
+        confirmationAcknowledgedCallCount += 1
     }
 }
