@@ -86,6 +86,15 @@ These classes are the hearts of our apps. Their capabilities include transformin
 
 ---
 
+# Strategy
+
+- **First**: make code testable
+- **Then**: add unit tests
+
+^An alternative is: first, add the best tests you can around existing hard-to-test code, then make that code (and all new code) testable. This protects against regressions but requires already-strong testing skills and the ability to deploy anti-patterns frequently without succumbing to their temptations.
+
+---
+
 # iOS dependencies
 
 In iOS, **common dependencies** include:
