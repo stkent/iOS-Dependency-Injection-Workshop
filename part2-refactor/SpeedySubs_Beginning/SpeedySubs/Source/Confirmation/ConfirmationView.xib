@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmationViewController" customModule="SpeedySubs" customModuleProvider="target">
+            <connections>
+                <outlet property="confirmationLabel" destination="s1d-uF-XER" id="y3Y-mk-Piz"/>
+                <outlet property="view" destination="iN0-l3-epB" id="mXY-JP-KDp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2EO-0g-u9C" userLabel="Toolbar">
+                    <rect key="frame" x="0.0" y="44" width="414" height="57"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Confirmation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dM-ak-tc3">
+                            <rect key="frame" x="20" y="18.5" width="374" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="6dM-ak-tc3" firstAttribute="centerY" secondItem="2EO-0g-u9C" secondAttribute="centerY" id="lrK-Fz-DS4"/>
+                        <constraint firstAttribute="trailing" secondItem="6dM-ak-tc3" secondAttribute="trailing" constant="20" id="nNN-Rj-jpo"/>
+                        <constraint firstAttribute="height" constant="57" id="qYy-sk-Z0y"/>
+                        <constraint firstItem="6dM-ak-tc3" firstAttribute="leading" secondItem="2EO-0g-u9C" secondAttribute="leading" constant="20" id="u0h-dZ-7LR"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MLu-Lp-mky" userLabel="Content container">
+                    <rect key="frame" x="20" y="121" width="374" height="90.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order XXXXXX successfully placed!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-uF-XER">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnz-CY-KdB">
+                            <rect key="frame" x="0.0" y="40.5" width="374" height="50"/>
+                            <color key="backgroundColor" red="0.79306994819999999" green="0.79306994819999999" blue="0.79306994819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="avF-dA-Pqg"/>
+                            </constraints>
+                            <state key="normal" title="DONE">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                            <connections>
+                                <action selector="onButtonTapped:" destination="-1" eventType="touchUpInside" id="xea-JH-1C8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2EO-0g-u9C" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1tq-sm-H6Z"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2EO-0g-u9C" secondAttribute="trailing" id="2yG-WZ-ZUc"/>
+                <constraint firstItem="MLu-Lp-mky" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Ic5-5X-VCC"/>
+                <constraint firstItem="MLu-Lp-mky" firstAttribute="top" secondItem="2EO-0g-u9C" secondAttribute="bottom" constant="20" id="QOi-0V-J6O"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MLu-Lp-mky" secondAttribute="trailing" constant="20" id="x07-Wt-VH6"/>
+                <constraint firstItem="2EO-0g-u9C" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="z8e-WY-QF5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
+        </view>
+    </objects>
+</document>

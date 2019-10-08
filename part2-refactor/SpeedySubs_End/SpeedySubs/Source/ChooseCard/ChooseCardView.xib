@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseCardViewController" customModule="SpeedySubs" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="YFC-Rz-u0y" id="Lu1-jR-zZL"/>
+                <outlet property="tableView" destination="doj-7H-UbW" id="2tn-u5-Hcv"/>
+                <outlet property="view" destination="iN0-l3-epB" id="FLk-6n-eU6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w04-Wf-DsN" userLabel="Toolbar">
+                    <rect key="frame" x="0.0" y="44" width="414" height="57"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxU-sJ-cwI">
+                            <rect key="frame" x="20" y="0.0" width="334" height="57"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="YFC-Rz-u0y">
+                            <rect key="frame" x="374" y="18.5" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="57" id="Sa0-TN-RBm"/>
+                        <constraint firstItem="yxU-sJ-cwI" firstAttribute="height" secondItem="w04-Wf-DsN" secondAttribute="height" id="U1p-PR-GIV"/>
+                        <constraint firstItem="yxU-sJ-cwI" firstAttribute="centerY" secondItem="w04-Wf-DsN" secondAttribute="centerY" id="UyS-cw-0hO"/>
+                        <constraint firstItem="yxU-sJ-cwI" firstAttribute="leading" secondItem="w04-Wf-DsN" secondAttribute="leading" constant="20" id="X23-E8-NE6"/>
+                        <constraint firstItem="YFC-Rz-u0y" firstAttribute="centerY" secondItem="w04-Wf-DsN" secondAttribute="centerY" id="k8L-uD-1sC"/>
+                        <constraint firstAttribute="trailing" secondItem="YFC-Rz-u0y" secondAttribute="trailing" constant="20" id="ma2-kc-i4D"/>
+                        <constraint firstItem="yxU-sJ-cwI" firstAttribute="trailing" secondItem="YFC-Rz-u0y" secondAttribute="leading" constant="-20" id="yFi-cr-vuo"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="doj-7H-UbW">
+                    <rect key="frame" x="0.0" y="101" width="414" height="761"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="rSf-4K-BIe"/>
+                        <outlet property="delegate" destination="-1" id="bSi-PF-GHh"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="w04-Wf-DsN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7s7-JC-SM4"/>
+                <constraint firstItem="w04-Wf-DsN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ocy-XO-HqY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="doj-7H-UbW" secondAttribute="bottom" id="imD-ub-TGR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="w04-Wf-DsN" secondAttribute="trailing" id="kBw-fi-Rnb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="doj-7H-UbW" secondAttribute="trailing" id="lh9-Pb-dhC"/>
+                <constraint firstItem="doj-7H-UbW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qTd-Lt-H0D"/>
+                <constraint firstItem="doj-7H-UbW" firstAttribute="top" secondItem="w04-Wf-DsN" secondAttribute="bottom" id="xg6-i5-ebn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="132" y="141"/>
+        </view>
+    </objects>
+</document>
