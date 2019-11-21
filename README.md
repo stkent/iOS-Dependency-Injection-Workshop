@@ -18,12 +18,12 @@ All workshop resources are collected in this repository. Before beginning, you s
 
 - Xcode 11.1 installed.
 - A basic awareness of unit testing.
-- A basic awareness of common iOS app architectures (MVC, MVVM).
+- A basic awareness of the MVVM app architecture.
 
 When you are ready to begin:
 
 1. Clone this respository.
 2. Read through the slides in the [part1-slides](part1-slides/) folder.
-3. Work through the refactors described in [part2-refactor/guide.md](part2-refactor/guide.md) using the [part2-refactor/SpeedySubs](part2-refactor/SpeedySubs) iOS app codebase.
+3. Work through the refactors described in [part2-refactor/guide.md](part2-refactor/guide.md) using the [part2-refactor/SpeedySubs_Beginning](part2-refactor/SpeedySubs_Beginning) iOS app codebase.
 
 Please reach out to me if you have unanswered questions!
