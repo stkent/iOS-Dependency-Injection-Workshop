@@ -1,5 +1,3 @@
-import Foundation
-
 protocol IOrderingAPI {
     func logIn(username: String,
                password: String,

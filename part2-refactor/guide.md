@@ -20,8 +20,6 @@ We'll perform this recipe step in two parts:
 
 - In the `SpeedySubs/Source/Ordering` group: create a protocol named `IOrderingAPI`:
     ```swift
-    import Foundation
-
     protocol IOrderingAPI {
         func logIn(username: String,
                    password: String,
@@ -41,8 +39,6 @@ We'll perform this recipe step in two parts:
 
 - In the `SpeedySubs/Source/State` group: create a protocol named `ISession`:
     ```swift
-    import Foundation
-
     protocol ISession {
         var customer: Customer? { get set }
         var order: Order? { get set }
@@ -72,7 +68,7 @@ We'll perform this recipe step in two parts:
 
 ## Step 4: Create real implementations
 
-- In the `OrderingAPI` class: add conformance to the `OrderingAPI` protocol (you shouldn't need to add any new methods to do so).
+- In the `OrderingAPI` class: add conformance to the `IOrderingAPI` protocol (you shouldn't need to add any new methods to do so).
     ```swift
     extension OrderingAPI: IOrderingAPI {}
     ```
@@ -84,7 +80,7 @@ We'll perform this recipe step in two parts:
 
 ## Step 5: Pass real implementations in production
 
-- In the `LoginViewController` class: fix the error in the line `let viewModel = LoginViewModel()` by injecting the newly-required dependencies:
+- In the `LoginViewController` class: fix the error in the line `let viewModel = LoginViewModel()` by injecting the production versions of our newly-declared dependencies:
     ```swift
     let viewModel = LoginViewModel(orderingAPI: OrderingAPI(), session: Session.shared)
     ```
@@ -129,8 +125,6 @@ Run the app. You should see no behavioral changes!
 
 - In the `SpeedySubs/Source/Persistence` group: create a protocol named `IFaveStorage`:
     ```swift
-    import Foundation
-
     protocol IFaveStorage {
         var favoriteSandwichId: Int? { get set }
     }
@@ -185,7 +179,7 @@ Run the app. You should see no behavioral changes!
 
 ## Step 5: Pass real implementations in production
 
-- In the `ChooseSandwichViewController` class: fix the error in the line `let viewModel = ChooseSandwichViewModel()` by updating the injected dependencies:
+- In the `ChooseSandwichViewController` class: fix the error in the line `let viewModel = ChooseSandwichViewModel()` by injecting the newly-required dependencies:
     ```swift
     let viewModel = ChooseSandwichViewModel(orderingAPI: OrderingAPI(),
                                             session: Session.shared,
