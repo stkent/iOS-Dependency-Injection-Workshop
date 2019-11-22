@@ -455,7 +455,7 @@ class SystemClock: IClock {
 
 ```swift
 // Initializer injection in production code:
-let friendlyTime = FriendlyTime(SystemClock())
+let friendlyTime = FriendlyTime(clock: SystemClock())
 print(friendlyTime.timeOfDay())
 ```
 
