@@ -639,7 +639,7 @@ We will _refactor_ each screen _to allow unit testing_ via DI.
 
 - **`AppDelegate`**: entry point & navigation.
 - **`Session`**: holds current customer and order.
-- **`OrderingApi`**: interface to fake backend.
+- **`OrderingAPI`**: interface to fake backend.
 
 ---
 
