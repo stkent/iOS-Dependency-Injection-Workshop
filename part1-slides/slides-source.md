@@ -266,7 +266,7 @@ We will *refactor so that*:
 - **_domain-specific_** names when appropriate,
 - a pragmatic balance between **_specificity_** and **_cohesion_**.
 
-^We can identify the relevant behaviors of our dependencies by inspecting their public methods and analyzing how they are called by our consumer. From there, the path we follow to create our protocol depends primarily on whether or not we authored the concrete dependency type. 
+^We can identify the relevant behaviors of our existing hard-coded dependencies by inspecting their public methods and analyzing how they are called by our consumer. From there, the path we follow to create our protocol depends primarily on whether or not we authored the existing concrete dependency type.
 
 ^If we did author the concrete dependency type, our ideal protocol will often be identical to the existing public API of that type (since that API hopefully already exhibits the attributes above - we designed it!).
 
@@ -524,10 +524,10 @@ func testTimeOfDayEvening() {
 - ✅ Simplest injection technique.
 - ✅ Dependency lifetimes controlled using familiar methods.
 - ✅ Sufficient for all unit testing needs.
-- ❌ Repetitive.
-- ❌ Can scale poorly if your dependency graph is deep
+- ✅ Works for fresh code _and_ refactors.
+- ❌ Repetitive, especially if your dependency graph is deep
     e.g. `D1(D2(D3(...), ...), ...)`.
-- ❌ Insufficient for coordinated UI testing.
+- ❌ Insufficient for UI testing.
 
 ^While repetitive, manual DI is normally not difficult to implement correctly because of this fact from earlier: "In most apps there is exactly one production implementation of most dependency protocols [...]" In addition, you can use default parameter values to automatically inject production dependencies by default, and only explicitly specify alternatives in test code.
 
