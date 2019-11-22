@@ -198,7 +198,9 @@ Run the app. You should see no behavioral changes!
 
 Run all the tests. Everything should pass (and be super-fast)!
 
-![](images/test-report.png)
+![](images/test-results.png)
+
+![](images/test-timing.png)
 
 # Back to the slides...
 
